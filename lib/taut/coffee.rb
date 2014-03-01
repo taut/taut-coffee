@@ -7,7 +7,7 @@ module Taut
       get "/coffee" do
         cups = params[:text]
 
-        return "How many cups did you want to make? eg: /coffee 5" if cups.nil?
+        return "How many cups did you want to make? eg: /coffee 5" if cups.nil? || cups.empty?
 
         measurements = MultiJson.load(::Net::HTTP.get(URI("http://coffee-bear.herokuapp.com/api/v1/measurements/#{ cups }")))
 
